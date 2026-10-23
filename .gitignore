@@ -1,0 +1,44 @@
+# Configuration & Local Environment Secrets
+app/config/config.php
+.env
+.env.*
+
+# Local Tooling & IDE Artifacts
+.claude/
+.gemini/
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*~
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# User Uploaded Payment Proofs & Dynamic Files
+uploads/payments/*
+!uploads/payments/.gitkeep
+uploads/notices/*
+!uploads/notices/.gitkeep
+uploads/avatars/*
+!uploads/avatars/.gitkeep
+
+# Temporary / Scratch scripts & logs
+*.log
+scratch/
+debug_*.php
+test_*.php
+
+# Dependencies (if added in future)
+vendor/
+node_modules/

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <linearGradient id="gbBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF9FE"/>
+      <stop offset="100%" stop-color="#F2ECFC"/>
+    </linearGradient>
+    <linearGradient id="rollGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="40%" stop-color="#334155"/>
+      <stop offset="70%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <linearGradient id="wrapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="rollShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#7C3AED" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#gbBg)" rx="24"/>
+  <ellipse cx="200" cy="330" rx="140" ry="22" fill="#000000" opacity="0.09"/>
+  <!-- Garbage Roll Body -->
+  <g filter="url(#rollShadow)" transform="rotate(-15 200 200)">
+    <!-- Cylinder back / 3D Roll -->
+    <rect x="110" y="140" width="180" height="130" rx="12" fill="url(#rollGrad)"/>
+    <!-- Roll side curve -->
+    <ellipse cx="110" cy="205" rx="20" ry="65" fill="#0F172A"/>
+    <ellipse cx="110" cy="205" rx="14" ry="45" fill="#334155"/>
+    <ellipse cx="110" cy="205" rx="6" ry="20" fill="#020617"/>
+    <ellipse cx="290" cy="205" rx="20" ry="65" fill="#334155"/>
+    <!-- Fold Texture lines -->
+    <line x1="130" y1="140" x2="130" y2="270" stroke="#475569" stroke-width="2" opacity="0.6"/>
+    <line x1="160" y1="140" x2="160" y2="270" stroke="#475569" stroke-width="2" opacity="0.6"/>
+    <line x1="240" y1="140" x2="240" y2="270" stroke="#475569" stroke-width="2" opacity="0.6"/>
+    <line x1="270" y1="140" x2="270" y2="270" stroke="#475569" stroke-width="2" opacity="0.6"/>
+    <!-- Green Paper Band Label -->
+    <rect x="175" y="138" width="80" height="134" rx="4" fill="url(#wrapGrad)"/>
+    <rect x="180" y="150" width="70" height="110" rx="3" fill="#FFFFFF"/>
+    <text x="215" y="172" font-family="'Inter', sans-serif" font-weight="900" font-size="12" fill="#059669" text-anchor="middle" letter-spacing="0.5">CLEANZONE</text>
+    <text x="215" y="195" font-family="'Inter', sans-serif" font-weight="900" font-size="22" fill="#1E293B" text-anchor="middle">30</text>
+    <text x="215" y="210" font-family="'Inter', sans-serif" font-weight="700" font-size="10" fill="#64748B" text-anchor="middle">BAGS ROLL</text>
+    <rect x="188" y="222" width="54" height="14" rx="3" fill="#ECFDF5"/>
+    <text x="215" y="233" font-family="'Inter', sans-serif" font-weight="800" font-size="8" fill="#059669" text-anchor="middle">OXO-BIODEG</text>
+    <text x="215" y="250" font-family="'Inter', sans-serif" font-weight="600" font-size="8" fill="#94A3B8" text-anchor="middle">MEDIUM 19x21"</text>
+  </g>
+  <!-- Tie strings -->
+  <path d="M70 260 Q 60 220 85 200" stroke="#EF4444" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M85 200 Q 105 180 100 230" stroke="#EF4444" stroke-width="4" stroke-linecap="round" fill="none"/>
+</svg>

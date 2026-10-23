@@ -136,6 +136,88 @@ sequenceDiagram
 
 ---
 
+## 🔀 System Data Flow Diagram (DFD Level-1)
+
+Yeh Data Flow Diagram (DFD) yeh illustrate karta hai ki platform me users (Residents, Society Admins, Wholesale Vendors, Delivery Agents) ke beech data kis tarah alag-alag processes aur MySQL database tables ke madhyam se flow hota hai:
+
+```mermaid
+flowchart TD
+    %% Styling Classes
+    classDef entity fill:#EDE9FE,stroke:#7C3AED,stroke-width:2px,color:#3730A3,font-weight:bold;
+    classDef process fill:#F3E8FF,stroke:#9333EA,stroke-width:2px,color:#581C87,font-weight:bold;
+    classDef datastore fill:#ECFDF5,stroke:#059669,stroke-width:2px,color:#065F46,font-weight:bold;
+
+    %% External Entities (Actors)
+    E1["👤 Resident / Customer"]:::entity
+    E2["🏢 Society Administrator"]:::entity
+    E3["🏭 Wholesale Supplier / Vendor"]:::entity
+    E4["🚴 Delivery Executive"]:::entity
+    E5["👑 Super Admin"]:::entity
+
+    %% Core System Processes
+    P1("<b>P1.0</b><br>Store Browsing & Cart Management"):::process
+    P2("<b>P2.0</b><br>Order Placement & Checkout"):::process
+    P3("<b>P3.0</b><br>Demand Aggregation & Packing Manifest"):::process
+    P4("<b>P4.0</b><br>Bulk Campaigns & RFQ Supplier Bidding"):::process
+    P5("<b>P5.0</b><br>Gate Inward & Delivery Assignment"):::process
+    P6("<b>P6.0</b><br>Doorstep Run Sheet & OTP Handover"):::process
+
+    %% Data Stores (Database Tables)
+    D1[("<b>D1</b>: products, product_variants, categories")]:::datastore
+    D2[("<b>D2</b>: carts & cart_items")]:::datastore
+    D3[("<b>D3</b>: orders & order_items")]:::datastore
+    D4[("<b>D4</b>: campaigns, quotations & purchase_orders")]:::datastore
+    D5[("<b>D5</b>: delivery_tasks & order_events")]:::datastore
+    D6[("<b>D6</b>: users, flats & societies")]:::datastore
+
+    %% Data Flow Connections
+    E1 -->|"1. Browse items & select pack sizes"| P1
+    D1 -->|"Fetch active products & society rates"| P1
+    P1 -->|"Store active items & quantities"| D2
+
+    E1 -->|"2. Submit checkout (Flat address, Slot, Mode)"| P2
+    D2 -->|"Read cart line items & subtotal"| P2
+    P2 -->|"Create new regular order (#BC26...)"| D3
+    P2 -->|"Return live tracking & confirmation"| E1
+
+    D3 -->|"Read confirmed society orders"| P3
+    E2 -->|"3. Trigger combined demand consolidation"| P3
+    P3 -->|"Aggregate quantities by product & flat"| D3
+    P3 -->|"Generate Printable Tower Packing Manifest"| E2
+
+    E2 -->|"4. Launch targeted bulk buying campaign"| P4
+    P4 -->|"Broadcast RFQ requirements"| E3
+    E3 -->|"Submit quotation & bulk pricing"| P4
+    P4 -->|"Accept bid & generate Purchase Order (PO)"| D4
+
+    E2 -->|"5. Confirm gate bulk shipment receipt"| P5
+    D3 -->|"Fetch packed orders ready for dispatch"| P5
+    P5 -->|"Generate & assign delivery tasks"| D5
+
+    D5 -->|"Dispatch active route assignments"| P6
+    P6 -->|"Provide mobile run sheet with contact & flats"| E4
+    E4 -->|"6. Submit customer OTP & proof photo"| P6
+    P6 -->|"Update delivery status: DELIVERED"| D5
+    P6 -->|"Update order completion & invoice timestamp"| D3
+    D3 -->|"Delivered alert & downloadable GST invoice"| E1
+
+    E5 -->|"Maintain master catalog, global margins & societies"| D1
+    E5 -->|"Audit trails, platform settings & tenant rules"| D6
+```
+
+### 📊 Data Flow Breakdown:
+
+| Process ID | Process Name | Inputs | Data Store Affected | Output / Recipient |
+| :--- | :--- | :--- | :--- | :--- |
+| **P1.0** | Store Browsing & Cart | Category filter, search query, pack choice | `D1 (products)`, `D2 (carts)` | Active cart items, instant discount display |
+| **P2.0** | Order Checkout | Delivery slot, flat address, payment type | `D2 (carts)`, `D3 (orders)` | Order `#BC26...`, live tracking timeline |
+| **P3.0** | Demand Aggregation | Multiple resident orders across flats | `D3 (orders, order_items)` | Combined bulk packing manifest for society admin |
+| **P4.0** | Bulk Campaigns & RFQ | Campaign target, vendor bids, quotation rates | `D4 (campaigns, quotations, PO)` | Finalized wholesale contract & PO generation |
+| **P5.0** | Gate Inward & Assignment | Physical shipment receipt, delivery staff ID | `D3 (orders)`, `D5 (delivery_tasks)` | Flat-wise task queue assigned to delivery agent |
+| **P6.0** | Doorstep OTP Handover | Delivery OTP, proof photo, cash collection | `D5 (tasks)`, `D3 (orders)` | Order marked `DELIVERED`, printable GST invoice |
+
+---
+
 ## ⚡ Core Features
 
 ### 🛒 1. Hyperlocal Grocery Store (Blinkit-Style UI)

@@ -28,33 +28,111 @@ Instead of residents ordering groceries and essentials individually at retail pr
 
 ## 📸 Application Screenshots
 
-<p align="center">
-  <b>🛒 Hyperlocal Grocery Store (Blinkit Purple UI)</b><br>
-  <img src="assets/screenshots/01_grocery_shop.png" alt="Bachat Grocery Shop" width="90%">
-</p>
+<div align="center">
 
-<p align="center">
-  <b>🧩 Combined Customer Products Manifest (Consolidated Demand across all Flats)</b><br>
-  <img src="assets/screenshots/03_combined_products_manifest.png" alt="Combined Products Manifest" width="90%">
-</p>
+### 📱 Mobile-First Experience: End-to-End Order to Delivery Workflow
 
-<p align="center">
-  <b>📢 Bulk Campaigns & Society Administration Dashboard</b><br>
-  <img src="assets/screenshots/04_bulk_campaigns.png" alt="Bulk Campaigns" width="90%">
-</p>
+| 🛒 **1. Grocery Store Catalog** | 🔍 **2. Pack Size & Savings** | 🛍️ **3. Cart & Doorstep Slot** |
+| :---: | :---: | :---: |
+| <img src="assets/screenshots/01_mobile_grocery_shop.png" alt="Grocery Catalog" width="260px" style="border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.12);"> | <img src="assets/screenshots/02_mobile_product_detail.png" alt="Product Detail" width="260px" style="border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.12);"> | <img src="assets/screenshots/03_mobile_cart_checkout.png" alt="Cart & Checkout" width="260px" style="border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.12);"> |
+| *Real products, categories & wholesale rates* | *Multi-pack options & variant selector* | *Cart review & free society batch delivery* |
 
-<table align="center" width="90%">
-  <tr>
-    <td align="center" width="50%">
-      <b>🛍️ Express Cart & Checkout</b><br>
-      <img src="assets/screenshots/02_cart_checkout.png" alt="Cart & Checkout" width="100%">
-    </td>
-    <td align="center" width="50%">
-      <b>📊 Campaign Lifecycle & RFQ Management</b><br>
-      <img src="assets/screenshots/05_campaign_lifecycle.png" alt="Campaign Lifecycle" width="100%">
-    </td>
-  </tr>
-</table>
+<br>
+
+| 📦 **4. Real-time Order Tracking** | 🧩 **5. Society Combined Manifest** | 🚴 **6. Delivery Partner Portal** |
+| :---: | :---: | :---: |
+| <img src="assets/screenshots/04_mobile_order_tracking.png" alt="Order Tracking" width="260px" style="border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.12);"> | <img src="assets/screenshots/05_mobile_society_manifest.png" alt="Society Combined Manifest" width="260px" style="border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.12);"> | <img src="assets/screenshots/06_mobile_delivery_portal.png" alt="Delivery Portal" width="260px" style="border-radius:14px;box-shadow:0 8px 24px rgba(0,0,0,0.12);"> |
+| *Status tracking, bill breakdown & timeline* | *Consolidated orders across all flats* | *Run sheet, flat numbers & proof handover* |
+
+</div>
+
+---
+
+## 🔄 End-to-End Process Workflow: Order Se Delivery Tak (Complete Guide)
+
+Bachat platform ka main motive housing societies ke residents ko direct wholesale prices provide karna aur operational delivery ko smooth banana hai. Yeh poora process kaise kaam karta hai:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor C as Resident / Customer
+    participant App as Bachat Web & Mobile App
+    actor Admin as Society Admin
+    actor Vendor as Wholesale Supplier
+    actor DP as Delivery Partner
+
+    Note over C,App: Step 1: Product Browsing & Order Placement
+    C->>App: Opens Catalog, selects items (Atta, Rice, Ghee, Soap)
+    C->>App: Reviews Cart, selects flat delivery address & payment
+    App-->>C: Order Placed (#BC2610249322) & Live Tracking Status
+
+    Note over App,Admin: Step 2: Society Demand Consolidation
+    App->>Admin: Automatically aggregates orders from all flats
+    Admin->>Admin: Views "Combined Products Manifest" (Total Qty + Flat breakdown)
+    Admin->>Vendor: Generates Purchase Order (PO) for combined bulk supply
+
+    Note over Vendor,Admin: Step 3: Goods Receipt & Society Gate Inward
+    Vendor->>Admin: Delivers consolidated bulk batch to society gate
+    Admin->>App: Verifies inward shipment & prints Tower Packing List
+
+    Note over Admin,DP: Step 4: Run Sheet & Doorstep Delivery
+    App->>DP: Assigns delivery tasks for Tower A & B flats
+    DP->>App: Checks mobile run sheet with flat numbers & customer contacts
+    DP->>C: Doorstep handover at Flat A-101
+    DP->>App: Confirms delivery via OTP / photo proof
+    App-->>C: Status updated to "Delivered" & GST Invoice available
+```
+
+### 📋 Phase-by-Phase Detailed Explanation:
+
+#### 1️⃣ Phase 1: Customer Order Placement (रेजिडेंट द्वारा आर्डर देना)
+- **Role**: `customer@bachat.com` (Resident - Flat A-101).
+- **Process**:
+  1. Resident mobile app open karta hai aur Blinkit-style store par grocery items (Atta, Rice, Dal, Soap, Cow Ghee) browse karta hai.
+  2. Product card par click karke pack size select karta hai (e.g., Basmati Rice 1kg, Aashirvaad Atta 5kg, Dettol Soap 3pk).
+  3. Items cart me add hoti hain. Cart review screen par subtotal, society bulk savings, aur delivery slot (Flat A-101) select karke **"Proceed to Checkout"** press karta hai.
+  4. Payment method me UPI QR / Netbanking ya Cash on Delivery select karke order place hota hai.
+
+#### 2️⃣ Phase 2: Instant Order Confirmation & Live Tracking (आर्डर कन्फर्मेशन व ट्रैकिंग)
+- **Role**: Customer (`customer@bachat.com`).
+- **Process**:
+  1. System unique order number generate karta hai (e.g. `BC2610249322`).
+  2. Customer ko live progress tracker dikhta hai: `Order Confirmed` &rarr; `Society Bulk Packing` &rarr; `Out for Delivery` &rarr; `Delivered`.
+  3. Order ki complete item list, unit rates, delivery charges (`₹0.00` batch delivery), aur total bill details customer dashboard me transparently visible rehti hain.
+
+#### 3️⃣ Phase 3: Society Admin Consolidated Demand & Packing Manifest (सोसायटी बल्क कम्बाईन)
+- **Role**: `society@bachat.com` (Society Admin - Green Meadow Residency).
+- **Process**:
+  1. Jab society ke multiple residents (Cust 1, Cust 2, etc.) orders place karte hain, Society Admin portal par **"Combined Customer Products"** view automatically open hota hai.
+  2. System saare orders ko product-wise consolidate kar deta hai:
+     - **Basmati Rice (1kg)**: Total 9 kg required (Flat A-101: 5 kg | Flat B-204: 4 kg).
+     - **Whole Wheat Atta (5kg)**: Total 3 bags required (Flat A-101: 2 bags | Flat B-204: 1 bag).
+     - **Pure Desi Cow Ghee (1L)**: Total 1 can required (Flat B-204: 1 can).
+     - **Bath Soap (3pk)**: Total 2 packs required (Flat A-101: 2 packs).
+  3. **Print Packing List Button**: Society manager 1-click me printable packing manifest nikal sakta hai jisse tower aur flat ke hisab se packing bag ready ho sake.
+
+#### 4️⃣ Phase 4: Wholesale Inward & Tower Batching (होलसेल सप्लाई व इनवर्ड)
+- **Role**: Vendor (`vendor@bachat.com`) + Society Admin.
+- **Process**:
+  1. Wholesale vendor pura stock single bulk batch me society security gate/clubhouse par deliver karta hai.
+  2. Society admin quantity verify karke goods receipt accept karta hai.
+  3. Packing manifest ke anusaar items ko flat-wise packets (Flat A-101 packet, Flat B-204 packet) me pack kiya jata hai.
+
+#### 5️⃣ Phase 5: Delivery Partner Assignment & Mobile Run Sheet (डिलीवरी रन शीट)
+- **Role**: `delivery@bachat.com` (Delivery Executive - Vijay Kale).
+- **Process**:
+  1. Delivery partner apne mobile me login karta hai aur **"My Delivery Tasks"** dashboard open karta hai.
+  2. Usko assigned flats ki direct list dikhti hai:
+     - **Order #BC2610249322**: Flat A-101 (Priya Sharma, +91 90000 00004).
+     - **Order #BC2610249400**: Flat B-204 (Rahul Patil, +91 90000 00005).
+  3. One-tap call button se delivery boy resident se directly contact kar sakta hai.
+
+#### 6️⃣ Phase 6: Doorstep Handover & Delivery Completion (डोरस्टेप डिलीवरी व रिसिप्ट)
+- **Role**: Delivery Partner + Customer.
+- **Process**:
+  1. Delivery boy resident ke doorstep par packet handover karta hai.
+  2. OTP verification ya proof photo upload karke **"Mark Delivered"** karta hai.
+  3. Customer ke app me order status instantly **"Delivered"** update ho jata hai aur official GST Tax Invoice download ke liye available ho jata hai.
 
 ---
 

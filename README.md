@@ -26,6 +26,38 @@ Instead of residents ordering groceries and essentials individually at retail pr
 
 ---
 
+## 📸 Application Screenshots
+
+<p align="center">
+  <b>🛒 Hyperlocal Grocery Store (Blinkit Purple UI)</b><br>
+  <img src="assets/screenshots/01_grocery_shop.png" alt="Bachat Grocery Shop" width="90%">
+</p>
+
+<p align="center">
+  <b>🧩 Combined Customer Products Manifest (Consolidated Demand across all Flats)</b><br>
+  <img src="assets/screenshots/03_combined_products_manifest.png" alt="Combined Products Manifest" width="90%">
+</p>
+
+<p align="center">
+  <b>📢 Bulk Campaigns & Society Administration Dashboard</b><br>
+  <img src="assets/screenshots/04_bulk_campaigns.png" alt="Bulk Campaigns" width="90%">
+</p>
+
+<table align="center" width="90%">
+  <tr>
+    <td align="center" width="50%">
+      <b>🛍️ Express Cart & Checkout</b><br>
+      <img src="assets/screenshots/02_cart_checkout.png" alt="Cart & Checkout" width="100%">
+    </td>
+    <td align="center" width="50%">
+      <b>📊 Campaign Lifecycle & RFQ Management</b><br>
+      <img src="assets/screenshots/05_campaign_lifecycle.png" alt="Campaign Lifecycle" width="100%">
+    </td>
+  </tr>
+</table>
+
+---
+
 ## ⚡ Core Features
 
 ### 🛒 1. Hyperlocal Grocery Store (Blinkit-Style UI)
